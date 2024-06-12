@@ -1,0 +1,50 @@
++---------------------------------------------------------+
+|                        Cliente                          |
++---------------------------------------------------------+
+           |
+           | Petición POST /registro
+           | con cuerpo JSON
+           |
+           v
++---------------------------------------------------------+
+|                        API                              |
+|            (Controlador de Registro)                    |
++---------------------------------------------------------+
+|  Validar datos del      |       Crear nuevo usuario    |
+|  usuario (formato       |    en la base de datos con  |
+|  de correo y clave)     |    los datos proporcionados |
+|                          |    y generar un UUID para   |
+|                          |    el ID del usuario        |
+|                          |                             |
+|                          v                             |
+|    +---------------------------+                        |
+|    |  Validar formato de correo|                        |
+|    |  y clave según expresión  |                        |
+|    |  regular                 |                        |
+|    +---------------------------+                        |
+|                    |                                     |
+|                    |                                     |
+|                    v                                     |
+|    +---------------------------------------+             |
+|    |  Verificar si el correo ya está      |             |
+|    |  registrado en la base de datos      |             |
+|    +---------------------------------------+             |
+|                    |                                     |
+|                    |                                     |
+|                    v                                     |
+|    +---------------------------------------+             |
+|    |  Generar token de acceso (UUID o JWT) |             |
+|    |  y persistirlo junto con el usuario   |             |
+|    +---------------------------------------+             |
+|                    |                                     |
+|                    |                                     |
+|                    v                                     |
+|    +---------------------------------------+             |
+|    |  Retornar respuesta con el usuario y  |             |
+|    |  los campos solicitados                |             |
+|    +---------------------------------------+             |
+|           |                                                |
+|           | Respuesta con código de estado y JSON          |
+|           |                                                |
+|           v                                                |
++---------------------------------------------------------+
